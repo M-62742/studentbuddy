@@ -29,6 +29,11 @@ body {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
+.header h1 i {
+    margin-right: 10px;
+    color: #ffd700;
+}
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -57,6 +62,10 @@ body {
     margin-bottom: 10px;
 }
 
+.stat-card h3 i {
+    margin-right: 8px;
+}
+
 .stat-value {
     font-size: 2rem;
     font-weight: bold;
@@ -82,6 +91,10 @@ body {
     border-radius: 25px;
     transition: all 0.3s ease;
     font-size: 1rem;
+}
+
+.nav-tab i {
+    margin-right: 8px;
 }
 
 .nav-tab.active {
@@ -113,6 +126,11 @@ body {
     font-weight: 500;
 }
 
+.form-group label i {
+    margin-right: 6px;
+    color: #667eea;
+}
+
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -141,6 +159,10 @@ body {
     font-size: 1rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn i {
+    margin-right: 6px;
 }
 
 .btn:hover {
@@ -249,6 +271,10 @@ body {
     border-radius: 20px;
     font-size: 0.9rem;
     margin: 5px;
+}
+
+.achievement-badge i {
+    margin-right: 6px;
 }
 
 @media (max-width: 768px) {
@@ -476,6 +502,10 @@ body {
     border-radius: 50%;
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
     z-index: 10;
+}
+
+.separator-icon i {
+    font-size: 1.2rem;
 }
 
 /* Mobile - Horizontal Separator */

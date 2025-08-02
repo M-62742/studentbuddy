@@ -97,13 +97,13 @@
                         <p><strong>Progress:</strong> ${subject.hoursSpent}/${subject.weeklyHours} hours (${Math.round(progressPercentage)}%)</p>
                         <div class="progress-bar" style="margin: 10px 0;">
                             <div class="progress-fill" style="width: ${progressPercentage}%;"></div>
-                        </div>.progress-fill {
+                        </div>
 
                         ${subject.notes ? `<p><strong>Notes:</strong> ${subject.notes}</p>` : ''}
                         <div style="margin-top: 10px;">
-                            <button class="btn" onclick="addStudyTime(${subject.id})">⏱️ Add Study Time</button>
+                            <button class="btn" onclick="addStudyTime(${subject.id})"><i class="fas fa-clock"></i> Add Study Time</button>
                             <button class="btn btn-danger" onclick="deleteSubject(${subject.id})" style="margin-left: 10px;">
-                                🗑️ Delete
+                                <i class="fas fa-trash"></i> Delete
                             </button>
                         </div>
                     </div>
@@ -154,19 +154,19 @@
                 let urgency = 'medium';
                 
                 if (progressPercentage < 50 && (priorityScore >= 3 || gradeScore >= 4)) {
-                    recommendation = `🚨 URGENT: ${subject.name} needs immediate attention! You're behind on your weekly goal and this subject is ${subject.priority} priority.`;
+                    recommendation = `<i class="fas fa-exclamation-triangle"></i> URGENT: ${subject.name} needs immediate attention! You're behind on your weekly goal and this subject is ${subject.priority} priority.`;
                     urgency = 'high';
                 } else if (subject.grade === 'F' || subject.grade === 'D') {
-                    recommendation = `📚 FOCUS: ${subject.name} requires extra study time. Current grade: ${subject.grade}. Consider scheduling 2-3 focused sessions this week.`;
+                    recommendation = `<i class="fas fa-book"></i> FOCUS: ${subject.name} requires extra study time. Current grade: ${subject.grade}. Consider scheduling 2-3 focused sessions this week.`;
                     urgency = 'high';
                 } else if (difficultyScore >= 3 && progressPercentage < 75) {
-                    recommendation = `💪 CHALLENGE: ${subject.name} is marked as ${subject.difficulty.replace('-', ' ')}. Consider breaking study sessions into smaller, focused chunks.`;
+                    recommendation = `<i class="fas fa-dumbbell"></i> CHALLENGE: ${subject.name} is marked as ${subject.difficulty.replace('-', ' ')}. Consider breaking study sessions into smaller, focused chunks.`;
                     urgency = 'medium';
                 } else if (progressPercentage >= 100) {
-                    recommendation = `🎉 EXCELLENT: You've met your weekly goal for ${subject.name}! Consider reviewing or helping others with this subject.`;
+                    recommendation = `<i class="fas fa-trophy"></i> EXCELLENT: You've met your weekly goal for ${subject.name}! Consider reviewing or helping others with this subject.`;
                     urgency = 'low';
                 } else if (progressPercentage >= 75) {
-                    recommendation = `✅ ON TRACK: ${subject.name} is progressing well. You're ${Math.round(progressPercentage)}% towards your weekly goal.`;
+                    recommendation = `<i class="fas fa-check-circle"></i> ON TRACK: ${subject.name} is progressing well. You're ${Math.round(progressPercentage)}% towards your weekly goal.`;
                     urgency = 'low';
                 }
                 
@@ -354,10 +354,10 @@
                         </div>
                         <div style="margin-left: 20px;">
                             <button class="btn ${assignment.completed ? 'btn-secondary' : ''}" onclick="toggleAssignment(${assignment.id})">
-                                ${assignment.completed ? '↩️ Undo' : '✅ Complete'}
+                                ${assignment.completed ? '<i class="fas fa-undo"></i> Undo' : '<i class="fas fa-check"></i> Complete'}
                             </button>
                             <button class="btn btn-danger" onclick="deleteAssignment(${assignment.id})" style="margin-left: 10px;">
-                                🗑️ Delete
+                                <i class="fas fa-trash"></i> Delete
                             </button>
                         </div>
                     </div>
@@ -371,7 +371,7 @@
             if (assignment) {
                 assignment.completed = !assignment.completed;
                 if (assignment.completed) {
-                    showNotification('Assignment completed! 🎉');
+                    showNotification('Assignment completed! <i class="fas fa-trophy"></i>');
                 }
                 displayAssignments();
                 updateStats();
@@ -438,10 +438,10 @@
                         </div>
                         <div style="margin-left: 20px;">
                             <button class="btn ${session.completed ? 'btn-secondary' : ''}" onclick="toggleSession(${session.id})">
-                                ${session.completed ? '↩️ Undo' : '✅ Complete'}
+                                ${session.completed ? '<i class="fas fa-undo"></i> Undo' : '<i class="fas fa-check"></i> Complete'}
                             </button>
                             <button class="btn btn-danger" onclick="deleteSession(${session.id})" style="margin-left: 10px;">
-                                🗑️ Delete
+                                <i class="fas fa-trash"></i> Delete
                             </button>
                         </div>
                     </div>
@@ -455,7 +455,7 @@
             if (session) {
                 session.completed = !session.completed;
                 if (session.completed) {
-                    showNotification('Study session completed! 📚');
+                    showNotification('Study session completed! <i class="fas fa-graduation-cap"></i>');
                     
                     // Add hours to corresponding subject if it exists
                     const subject = subjects.find(s => s.name === session.subject);
@@ -509,7 +509,7 @@
                     if (currentTime <= 0) {
                         clearInterval(currentTimer);
                         isRunning = false;
-                        showNotification('Focus session completed! Take a break. 🎉');
+                        showNotification('Focus session completed! Take a break. <i class="fas fa-trophy"></i>');
                         
                         // Add to focus history
                         const duration = parseInt(document.getElementById('timerDuration').value);
